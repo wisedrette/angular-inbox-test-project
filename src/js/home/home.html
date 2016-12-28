@@ -1,0 +1,27 @@
+<div flex="70" flex-offset="15">
+    <section ng-repeat="item in messages" ng-if="$root.signedIn">
+        <p ng-if="displayDate($index)">{{ displayDate($index) }}</p>
+        <md-card>
+            <md-list-item class="md-2-line" ng-click="item.snippet && showBody(item)">
+                <img ng-src="{{item.image}}" alt="{{item.from}}" class="md-avatar">
+
+                <div class="md-list-item-text" layout="row">
+
+                    <div flex-xs="" flex-gt-xs="50" layout="column">
+                        <h3 style="font-weight: bold">{{item.subject}}</h3>
+                    </div>
+
+                    <div flex-xs="" flex-gt-xs="50" layout="column" ng-if="!item.showBody">
+                        <h3>{{item.snippet}}</h3>
+                    </div>
+                </div>
+            </md-list-item>
+            <div flex-xs="" flex-gt-xs="100" layout="column" ng-if="item.showBody" ng-bind-html="item.body">
+            </div>
+        </md-card>
+    </section>
+    <h2 ng-if="!$root.signedIn">Please sign in with your Google account</h2>
+</div>
+<div layout="row" layout-sm="column" layout-align="space-around" ng-if="$root.signedIn&&$root.loadMore" style="padding: 20px 0">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>

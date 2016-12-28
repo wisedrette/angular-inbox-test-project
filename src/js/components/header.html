@@ -1,0 +1,21 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <div  layout-align="start center" layout="column">
+    <md-menu>
+      <md-button aria-label="Settings Open menu" ng-click="$mdOpenMenu($event)" ng-disabled="!$root.signedIn">
+        Menu
+      </md-button>
+      <md-menu-content>
+        <md-menu-item>
+          <md-button ng-click="signOut()">
+            Sign out
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+    </div>
+    <h3>
+      <span>{{$root.title}}</span>
+    </h3>
+  </div>
+</md-toolbar>
